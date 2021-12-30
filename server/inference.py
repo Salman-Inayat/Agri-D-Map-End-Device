@@ -5,22 +5,25 @@ from torchvision import models, transforms
 from PIL import Image
 import sys
 
-
-folder_path = "./output"
+# folder_path = "./output"
+folder_path = "./server/output"
 
 files = os.listdir(folder_path)
 for f in files:
     image_name = f
 
-image_path = "./output/" + image_name
+# image_path = "./output/" + image_name
+image_path = "./server/output/" + image_name
 
 model = models.resnet18(pretrained=True)
 
 model.fc = torch.nn.Linear(in_features=512, out_features=3)
 loss_fn = torch.nn.CrossEntropyLoss()
 
+# model.load_state_dict(torch.load(
+#     "Inference/model/model.pt", map_location=torch.device('cpu')))
 model.load_state_dict(torch.load(
-    "Inference/model/model.pt", map_location=torch.device('cpu')))
+    "./server/Inference/model/model.pt", map_location=torch.device('cpu')))
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = model.to(device)

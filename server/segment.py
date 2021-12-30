@@ -5,7 +5,8 @@ import os
 from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array
 
-os.chdir("./u2net")
+# os.chdir("./u2net")
+os.chdir("./server/u2net")
 
 #import u2net_test.py
 
@@ -16,7 +17,7 @@ def background_removal():
     os.system("python -W ignore u2net_test.py")
     #!python -W ignore u2net_test.py
    
-    image_dir = os.path.join(os.getcwd(), 'images')
+    image_dir = os.path.join(os.getcwd(), '/u2net/images')
     names = [name[:-4] for name in os.listdir(image_dir)]
     THRESHOLD = 0.9
     RESCALE = 255
@@ -30,7 +31,7 @@ def background_removal():
 
       # BACKGROUND REMOVAL
 
-      output = load_img('./results/'+name+'.png')
+      output = load_img('./server/u2net/results/'+name+'.png')
       out_img = img_to_array(output)
       out_img /= RESCALE
 
@@ -43,7 +44,7 @@ def background_removal():
       a_layer = mul_layer*a_layer_init
       rgba_out = np.append(out_img,a_layer,axis=2)
 
-      input = load_img('./images/'+name+'.jpg')
+      input = load_img('./server/u2net/images/'+name+'.jpg')
       inp_img = img_to_array(input)
       inp_img /= RESCALE
 
@@ -90,7 +91,7 @@ def background_removal():
       inp_img = cv2.resize(inp_img,(int(shape[1]/3),int(shape[0]/3)))
       rem_back = cv2.resize(rem_back_scaled,(int(shape[1]/3),int(shape[0]/3)))
       rem_save = Img.fromarray(rem_back.astype('uint8'), 'RGBA')
-      rem_save.save("../output/" + name + ".png")
+      rem_save.save("./server/output/" + name + ".png")
     #   box_img = cv2.resize(box_img_scaled,(int(shape[1]/3),int(shape[0]/3)))
     #   sal_img = cv2.resize(sal_img_scaled,(int(shape[1]/3),int(shape[0]/3)))
     #   result = np.concatenate((inp_img,rem_back,box_img,sal_img),axis=1)

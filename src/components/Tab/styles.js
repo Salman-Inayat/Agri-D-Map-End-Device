@@ -1,8 +1,8 @@
 import { makeStyles } from "@mui/styles";
 
-export default makeStyles((theme) => ({
+export default makeStyles(() => ({
   tabPanel: {
-    paddingRight: theme.spacing(2),
+    paddingRight: "20px",
   },
   resultImage: {
     height: "300px",

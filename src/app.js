@@ -25,7 +25,7 @@ function App() {
     healthy: {
       title: "Healthy: Healthy Plant",
       description:
-        "Fertilize with the right fertilizer mixture and a balanced nutrient supply. Do not over-water the crop during the season. Do not touch healthy plants after touching infected plants. Maintain a high number of different varieties of plants around fields. If treating against an infestation, use specific products that do not affect beneficial insects. Remove diseased leaves, fruit or branches at the right time during the growing season. After the harvest, clean up plant debris from the field or orchard and burn them. In case of pests and diseases, always consider an integrated approach. with preventive measures together with biological treatments if available. As long as preventive measures are followed and care is taken to give plants and trees what they need, no chemical control should be needed!",
+        "Fertilize the crop with the right fertilizer mixture and a balanced nutrient supply. Do not over-water the crop during the season. Do not touch healthy plants after touching infected plants. Maintain a high number of different varieties of plants around fields. If treating against an infestation, use specific products that do not affect beneficial insects. Remove diseased leaves, fruit or branches at the right time during the growing season. After the harvest, clean up plant debris from the field or orchard and burn them. In case of pests and diseases, always consider an integrated approach. with preventive measures together with biological treatments if available. As long as preventive measures are followed and care is taken to give plants and trees what they need, no chemical control should be needed!",
       symptoms: [
         "Dark green colored plant",
         "Firm leaves",
@@ -75,7 +75,7 @@ function App() {
       setLoading(true);
       axios
         .post(
-          "http://localhost:9000/image-segment",
+          "http://localhost:3001/image-segment",
           {
             image: image,
           },

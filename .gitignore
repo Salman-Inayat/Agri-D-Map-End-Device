@@ -3,3 +3,7 @@ dist
 build
 build-server
 .idea
+
+server/u2net/images/
+server/u2net/results/
+server/output/
