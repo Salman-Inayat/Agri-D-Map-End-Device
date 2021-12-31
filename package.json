@@ -1,5 +1,5 @@
 {
-  "name": "agri-d-map-edge-device",
+  "name": "agri-vision",
   "version": "1.0.0",
   "description": "An Electron application with React and Node",
   "main": "./main.js",

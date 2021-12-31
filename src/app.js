@@ -75,7 +75,7 @@ function App() {
       setLoading(true);
       axios
         .post(
-          "http://localhost:3001/image-segment",
+          "http://localhost:4000/image-segment",
           {
             image: image,
           },
@@ -122,17 +122,47 @@ function App() {
   return (
     <div>
       <LoadingOverlay active={loading} spinner text="Processing the image">
-        <Grid container spacing={3} className={classes.div_container}>
-          <Grid item md={5} sm={12} className={classes.ind_div}>
+        <Grid container spacing={2} className={classes.div_container}>
+          <Grid
+            item
+            md={5}
+            sm={5}
+            className={classes.ind_div}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <ImagePicker
               handleImage={handleImage}
               handleImagePresent={handleImagePresent}
             />
           </Grid>
-          <Grid item md={1} sm={12} className={classes.ind_div}>
+          <Grid
+            item
+            md={1}
+            sm={1}
+            className={classes.ind_div}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <h3>OR</h3>
           </Grid>
-          <Grid item md={6} sm={12} className={classes.ind_div}>
+          <Grid
+            item
+            md={5}
+            sm={6}
+            className={classes.ind_div}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <WebcamCapture
               handleImage={handleImage}
               handleImagePresent={handleImagePresent}
@@ -156,6 +186,11 @@ function App() {
               size="large"
               className={classes.submitButton}
               onClick={handleSubmit}
+              style={{
+                backgroundColor: "#3f4257",
+                borderRadius: "30px",
+                color: "white",
+              }}
             >
               Submit
             </Button>

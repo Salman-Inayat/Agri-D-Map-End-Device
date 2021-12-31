@@ -55,6 +55,7 @@ const WebcamCapture = (props) => {
             }}
             className={classes.webcamBtn}
             // startIcon={<CameraAltIcon />}
+            style={{ backgroundColor: "#3f4257", borderRadius: "30px" }}
           >
             Retake Image
           </Button>
@@ -68,6 +69,12 @@ const WebcamCapture = (props) => {
               capture();
             }}
             className={classes.webcamBtn}
+            style={{
+              marginLeft: "30%",
+              backgroundColor: "#3f4257",
+              borderRadius: "30px",
+            }}
+
             // startIcon={<CameraAltIcon />}
           >
             Capture
