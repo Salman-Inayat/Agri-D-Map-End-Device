@@ -49,13 +49,13 @@ export default function ReaultTab(props) {
   useEffect(() => {
     setImage(props.image);
     console.log(props.image);
-    setImageURL(`http://localhost:4000/${props.image}`);
+    setImageURL(`http://localhost:43321/${props.image}`);
   }, []);
 
   useEffect(() => {
     setImage(props.image);
     console.log(props.image);
-    setImageURL(`http://localhost:4000/${props.image}`);
+    setImageURL(`http://localhost:43321/${props.image}`);
   }, [props.image]);
 
   const handleChange = (event, newValue) => {
@@ -64,9 +64,9 @@ export default function ReaultTab(props) {
 
   const reloadSrc = (e) => {
     if (fallback) {
-      e.target.src = `http://localhost:4000/${props.image}`;
+      e.target.src = `http://localhost:43321/${props.image}`;
     } else {
-      e.target.src = setImageURL(`http://localhost:4000/${props.image}`);
+      e.target.src = setImageURL(`http://localhost:43321/${props.image}`);
       setFallback(true);
     }
   };

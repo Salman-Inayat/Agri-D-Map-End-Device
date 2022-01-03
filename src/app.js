@@ -75,7 +75,7 @@ function App() {
       setLoading(true);
       axios
         .post(
-          "http://localhost:4000/image-segment",
+          "http://localhost:43321/image-segment",
           {
             image: image,
           },

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Webcam from "react-webcam";
 import { Button } from "@mui/material";
 import useStyles from "./styles.js";
@@ -16,7 +16,26 @@ const WebcamCapture = (props) => {
     facingMode: "user",
   };
 
-  const capture = React.useCallback(() => {
+  const [deviceId, setDeviceId] = useState({});
+  const [devices, setDevices] = useState([]);
+
+  const handleDevices = useCallback(
+    (mediaDevices) =>
+      setDevices(
+        mediaDevices.filter(
+          ({ kind, label }) =>
+            kind === "videoinput" &&
+            label === "Logitech Webcam C930e (046d:0843)"
+        )
+      ),
+    [setDevices]
+  );
+
+  useEffect(() => {
+    navigator.mediaDevices.enumerateDevices().then(handleDevices);
+  }, [handleDevices]);
+
+  const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImage(imageSrc);
     props.handleImage(imageSrc);
@@ -30,7 +49,7 @@ const WebcamCapture = (props) => {
   return (
     <div className="webcam-container">
       <div className="webcam-img">
-        {image === "" ? (
+        {/* {image === "" ? (
           <Webcam
             audio={false}
             height={300}
@@ -41,6 +60,20 @@ const WebcamCapture = (props) => {
           />
         ) : (
           <img src={image} alt="img" />
+        )} */}
+        {devices.map((device, key) =>
+          image === "" ? (
+            <Webcam
+              audio={false}
+              ref={webcamRef}
+              screenshotFormat="image/jpeg"
+              width={450}
+              height={450}
+              videoConstraints={{ deviceId: device.deviceId }}
+            />
+          ) : (
+            <img src={image} alt="img" />
+          )
         )}
       </div>
       <div>

@@ -88,6 +88,6 @@ app.post("/image-segment", base64ToImage, (req, res) => {
   });
 });
 
-HTTP.listen(4000, () => {
-  console.log("listening on Port: 4000");
+HTTP.listen(43321, () => {
+  console.log("listening on Port: 43321");
 });

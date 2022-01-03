@@ -11,10 +11,10 @@
     "server-build": "babel server --out-dir build-server",
     "server-start": "nodemon --watch server --exec babel-node server/server.js",
     "electron-dev": "node scripts/dev.js scripts/start.js",
-    "electron-pack": "electron-builder -c.extraMetadata.main='./main.js'",
+    "electron-pack": "electron-builder --linux -c.extraMetadata.main='./main.js'",
     "preelectron-pack": "npm run react-build && npm run server-build"
   },
-  "author": "Salman Inayat",
+  "author": "Salman Inayat <salmaninayat1999@gmail.com>",
   "devDependencies": {
     "react-app-rewired": "^2.1.3",
     "customize-cra": "^0.2.12",
@@ -53,18 +53,10 @@
   "build": {
     "appId": "com.electron-react-node",
     "linux": {
-      "target": "AppImage",
-      "category": "Development"
+      "target": "deb",
+      "category": "Utility"
     },
     "deb": {},
-    "win": {
-      "target": "nsis"
-    },
-    "nsis": {
-      "oneClick": false,
-      "perMachine": false,
-      "allowToChangeInstallationDirectory": true
-    },
     "files": [
       "build/**/**/*",
       "build-server/**/**/*",
